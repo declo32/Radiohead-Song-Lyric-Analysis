@@ -49,4 +49,7 @@ Temporary Items
 # PyCharm IDE
 .idea
 
+# Jupyter Notebooks
+.ipynb_checkpoints
+
 __pycache__

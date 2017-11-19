@@ -34,6 +34,7 @@ def get_lyrics(artist, song_title):
     lyrics = lyrics.replace('<br>', '').replace('</br>', '').replace('</div>', '').strip()
     return lyrics
 
+
 if __name__ == '__main__':
     with open("Radiohead-Discography.yaml", "rb") as file:
         radioheadDiscography = yaml.load(file)
@@ -42,9 +43,9 @@ if __name__ == '__main__':
 
     for album in radioheadDiscography:
         for key in album:
-            for song in album[key]:
-                l = get_lyrics("Radiohead", song)
-                df = df.append({"artist": "Radiohead", "album": key, "song": song, "lyrics": l}, ignore_index=True)
+            for title in album[key]:
+                l = get_lyrics("Radiohead", title)
+                df = df.append({"artist": "Radiohead", "album": key, "title": title, "lyrics": l}, ignore_index=True)
 
                 print(l)
                 print("\nWaiting 60s")
