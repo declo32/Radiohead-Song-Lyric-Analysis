@@ -53,4 +53,5 @@ if __name__ == '__main__':
                     print(x)
                     time.sleep(1)
 
-    df.to_csv("lyrics.csv")
+    with open("lyrics.csv", "w", newline="\n") as file:  # I'm on windows :(
+        df.to_csv(file)

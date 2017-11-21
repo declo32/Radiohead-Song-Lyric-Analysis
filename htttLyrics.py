@@ -3,7 +3,7 @@ import time
 
 import getLyrics
 
-df = pd.read_csv("lyrics.csv", encoding="latin1")  # Yes latin1 is necessary
+df = pd.read_csv("lyrics.csv", index_col=0, encoding="latin1")  # Yes latin1 is necessary
 
 for i, song in df[df["album"] == "Hail to the Thief"].iterrows():
     title = df.loc[i, "title"].split(" (")[0]  # Get the first title, before parentheses
@@ -15,4 +15,5 @@ for i, song in df[df["album"] == "Hail to the Thief"].iterrows():
         print(x)
         time.sleep(1)
 
-df.to_csv("lyrics.csv")
+with open("lyrics.csv", "w", newline="\n") as file:  # I'm on windows :(
+    df.to_csv(file)

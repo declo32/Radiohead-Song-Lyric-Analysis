@@ -3,7 +3,7 @@ import time
 
 import getLyrics
 
-df = pd.read_csv("lyrics.csv", encoding="latin1")
+df = pd.read_csv("lyrics.csv", index_col=0, encoding="latin1")
 
 titles = {
     "How Do You Do?": "How Do You?",
@@ -27,4 +27,5 @@ for i, song in df[df["lyrics"].isnull()].iterrows():  # All null lyrics
         df.loc[i, "lyrics"] = ""
         print(df.loc[i])
 
-df.to_csv("lyrics.csv")
+with open("lyrics.csv", "w", newline="\n") as file:  # I'm on windows :(
+    df.to_csv(file)
